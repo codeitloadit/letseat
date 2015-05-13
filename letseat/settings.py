@@ -74,7 +74,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'pollar.wsgi.application'
+WSGI_APPLICATION = 'letseat.wsgi.application'
 
 
 # Database
