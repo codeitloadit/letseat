@@ -1,0 +1,1 @@
+{"filter":false,"title":"pytest - Stopped","tooltip":"pytest - Stopped","undoManager":{"mark":-2,"position":-1,"stack":[]},"output":{"id":"output387978","width":1092,"height":264,"scrollTop":-1,"config":{"command":"py.test -s","debug":true,"env":{},"name":"pytest","runner":"Shell command"}},"timestamp":1431450608351,"hash":"67452301efcdab8998badcfe10325476c3d2e1f0"}
