@@ -1,5 +1,27 @@
 {% extends "base.html" %}
 
 {% block content %}
+    <div class="segmented-control home">
+        <a class="control-item active" href="#itemlogin">Login</a>
+        <a class="control-item" href="#itemregister">Register</a>
+    </div>
 
+    <div class="card home">
+        <div id="itemlogin" class="control-content active">
+            <form>
+                <input type="text" placeholder="Username" required>
+                <input type="password" placeholder="Password" required>
+                <button class="btn btn-positive btn-block">Login</button>
+            </form>
+        </div>
+
+        <div id="itemregister" class="control-content">
+            <form>
+                <input type="text" placeholder="Username" required>
+                <input type="password" placeholder="Password" required>
+                <input type="password" placeholder="Confirm" required>
+                <button class="btn btn-positive btn-block">Register</button>
+            </form>
+        </div>
+    </div>
 {% endblock %}

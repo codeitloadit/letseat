@@ -1,0 +1,9 @@
+.segmented-control.home {
+    margin-bottom: 16px;
+}
+
+.card.home {
+    border: none;
+    padding: 2px;
+    margin: -2px;
+}
