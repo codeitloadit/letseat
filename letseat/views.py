@@ -25,14 +25,16 @@ def register(request):
     password = request.POST.get('password')
     confirm = request.POST.get('confirm')
     messages = []
+    if not username or not password or not confirm:
+        messages.append('All fields are required!')
+        return TemplateResponse(request, 'login_or_register.html', {'messages': messages, 'register_tab': True})
     if password != confirm:
         messages.append('Passwords did not match!')
-    else:
-        try:
-            User.objects.create_user(username=username, password=password)
-        except IntegrityError:
-            messages.append('That username is already taken!')
-    if messages:
+        return TemplateResponse(request, 'login_or_register.html', {'messages': messages, 'register_tab': True})
+    try:
+        User.objects.create_user(username=username, password=password)
+    except IntegrityError:
+        messages.append('That username is already taken!')
         return TemplateResponse(request, 'login_or_register.html', {'messages': messages, 'register_tab': True})
     user = auth.authenticate(username=username, password=password)
     auth.login(request, user)
