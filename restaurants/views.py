@@ -21,7 +21,24 @@ def new(request):
         address = request.POST.get('address')
         website = request.POST.get('website')
         logo = request.POST.get('logo')
-        Restaurant.objects.create(created_by=request.user, modified_by= request.user, name=name,
+        Restaurant.objects.create(created_by=request.user, modified_by= request.user, name=name.strip(),
                                   phone_number=phone_number, address=address, website=website, logo=logo)
         return HttpResponseRedirect(reverse('restaurants:index'))
     return TemplateResponse(request, 'new.html')
+
+
+def edit(request, pk):
+    restaurant = Restaurant.objects.get(pk=pk)
+    if request.method == 'POST':
+        restaurant.phone_number = request.POST.get('phone_number')
+        restaurant.address = request.POST.get('address')
+        restaurant.website = request.POST.get('website')
+        restaurant.logo = request.POST.get('logo')
+        restaurant.save()
+        return HttpResponseRedirect(reverse('restaurants:index'))
+    return TemplateResponse(request, 'edit.html', {'restaurant': restaurant})
+
+
+def delete(request, pk):
+    Restaurant.objects.get(pk=pk).delete()
+    return HttpResponseRedirect(reverse('restaurants:index'))

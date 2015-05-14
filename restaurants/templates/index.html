@@ -6,7 +6,7 @@
     {% endif %}
     <ul class="table-view">
         {% for restaurant in restaurants %}
-            <li class="table-view-cell">{{ restaurant.name }}<button class="btn btn-negative btn-outlined">0</button></li>
+            <li class="table-view-cell"><a href="{% url 'restaurants:edit' pk=restaurant.pk %}">{{ restaurant.name }}<button class="btn btn-negative btn-outlined">0</button></a></li>
         {% endfor %}
         <li class="table-view-divider">Placeholders</li>
         <li class="table-view-cell">Placeholder 1<button class="btn btn-positive btn-outlined">1</button></li>
