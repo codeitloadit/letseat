@@ -7,3 +7,7 @@
     padding: 2px;
     margin: -2px;
 }
+ .messageicon {
+     float: right;
+     margin: 0px 8px;
+ }

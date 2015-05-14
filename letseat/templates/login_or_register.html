@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="content-padded">
+        {% include "_messages.html" %}
+
+        <div class="segmented-control home">
+            <a class="control-item {% if not register_tab %}active{% endif %}" href="#itemlogin">Login</a>
+            <a class="control-item {% if register_tab %}active{% endif %}" href="#itemregister">Register</a>
+        </div>
+
+        <div class="card home">
+            <div id="itemlogin" class="control-content {% if not register_tab %}active{% endif %}">
+                <form action="{% url 'login' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="text" name="username" placeholder="Username" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <button class="btn btn-positive btn-block">Login</button>
+                </form>
+            </div>
+
+            <div id="itemregister" class="control-content {% if register_tab %}active{% endif %}">
+                <form action="{% url 'register' %}" method="POST">
+                    {% csrf_token %}
+                    <input type="text" name="username" placeholder="Username" required>
+                    <input type="password" name="password" placeholder="Password" required>
+                    <input type="password" name="confirm" placeholder="Confirm" required>
+                    <button class="btn btn-positive btn-block">Register</button>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock %}

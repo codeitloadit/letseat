@@ -18,10 +18,16 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.views.generic.base import RedirectView, TemplateView
 
+from letseat import views
+
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^favicon\.ico$', RedirectView.as_view(url='/static/favicon.ico', permanent=True)),
-    url(r'^$', TemplateView.as_view(template_name='home.html'), name='home'),
-    url('^login/', 'django.contrib.auth.views.login', {'template_name': 'login.html'}, name='login'),
-    url('^register/', 'django.contrib.auth.views.login', {'template_name': 'register.html'}, name='register'),
+
+    url(r'^$', views.index, name='index'),
+    url(r'^register$', views.register, name='register'),
+    url(r'^login_or_register$', views.login_or_register, name='login_or_register'),
+    url(r'^login$', views.login, name='login'),
+    url(r'^logout$', views.logout, name='logout'),
+    url(r'^home$', views.home, name='home'),
 ]
