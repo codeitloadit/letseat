@@ -27,9 +27,6 @@ def register(request):
         # TODO: Better error notification
         # return TemplateResponse(request, 'login_or_register.html')
         messages.append('Passwords did not match!')
-        messages.append('Passwords did not match!')
-        messages.append('Passwords did not match!')
-        messages.append('Passwords did not match!')
         return TemplateResponse(request, 'login_or_register.html', {'messages': messages, 'register_tab': True})
     User.objects.create_user(username, password=password)
     user = auth.authenticate(username=username, password=password)
