@@ -15,6 +15,7 @@ Including another URLconf
 """
 
 from django.conf.urls import include, url
+# from django.core.urlresolvers import reverse
 from django.contrib import admin
 from django.views.generic.base import RedirectView, TemplateView
 
@@ -23,11 +24,12 @@ from letseat import views
 urlpatterns = [
     url(r'^admin/', include(admin.site.urls)),
     url(r'^favicon\.ico$', RedirectView.as_view(url='/static/favicon.ico', permanent=True)),
+    url(r'^accounts/login/*$', RedirectView.as_view(url='/login_or_register', permanent=True)),
 
-    url(r'^$', views.index, name='index'),
-    url(r'^register$', views.register, name='register'),
-    url(r'^login_or_register$', views.login_or_register, name='login_or_register'),
-    url(r'^login$', views.login, name='login'),
-    url(r'^logout$', views.logout, name='logout'),
-    url(r'^home$', views.home, name='home'),
+    url(r'^/*$', views.index, name='index'),
+    url(r'^register/*$', views.register, name='register'),
+    url(r'^login_or_register/*$', views.login_or_register, name='login_or_register'),
+    url(r'^login/*$', views.login, name='login'),
+    url(r'^logout/*$', views.logout, name='logout'),
+    url(r'^home/*$', views.home, name='home'),
 ]

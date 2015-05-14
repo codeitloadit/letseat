@@ -1,6 +1,8 @@
 from django.contrib import auth
+from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
+from django.db import IntegrityError
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template.response import TemplateResponse
 from django.views.decorators.http import require_GET, require_POST
@@ -24,11 +26,14 @@ def register(request):
     confirm = request.POST.get('confirm')
     messages = []
     if password != confirm:
-        # TODO: Better error notification
-        # return TemplateResponse(request, 'login_or_register.html')
         messages.append('Passwords did not match!')
+    else:
+        try:
+            User.objects.create_user(username=username, password=password)
+        except IntegrityError:
+            messages.append('That username is already taken!')
+    if messages:
         return TemplateResponse(request, 'login_or_register.html', {'messages': messages, 'register_tab': True})
-    User.objects.create_user(username, password=password)
     user = auth.authenticate(username=username, password=password)
     auth.login(request, user)
     return TemplateResponse(request, 'home.html')
@@ -51,5 +56,6 @@ def logout(request):
     return HttpResponseRedirect(reverse('index'))
 
 
+@login_required
 def home(request):
     return TemplateResponse(request, 'home.html')
