@@ -26,10 +26,6 @@
     <body>
         <!-- Make sure all your bars are the first things in your <body> -->
         <header class="bar bar-nav">
-            {% if request.user.is_authenticated %}
-                <button class="btn pull-left">{{ request.user.username }}</button>
-                <a href="{% url 'logout' %}"><button class="btn pull-right">Logout</button></a>
-            {% endif %}
             {% block title %}<h1 class="title">Let's Eat!</h1>{% endblock title %}
         </header>
 
