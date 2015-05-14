@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="content-padded">
+        <form action="{% url 'restaurants:new' %}" method="POST">
+            {% csrf_token %}
+            <label class="btn btn-positive btn-block btn-outlined">New Restaurant</label>
+            <input type="text" name="restaurant_name" placeholder="Name" required>
+            <input type="text" name="phone_number" placeholder="Phone Number">
+            <input type="text" name="address" placeholder="Address">
+            <input type="text" name="website" placeholder="Website">
+            <input type="text" name="logo" placeholder="Logo">
+            <button class="btn btn-positive btn-block">Save</button>
+            <a href="{% url 'restaurants:index' %}" class="btn btn-negative btn-block">Cancel</a>
+        </form>
+    </div>
+{% endblock %}

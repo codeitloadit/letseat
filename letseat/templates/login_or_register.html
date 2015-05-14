@@ -2,8 +2,6 @@
 
 {% block content %}
     <div class="content-padded">
-        {% include "_messages.html" %}
-
         <div class="segmented-control home">
             <a class="control-item {% if not register_tab %}active{% endif %}" href="#itemlogin">Login</a>
             <a class="control-item {% if register_tab %}active{% endif %}" href="#itemregister">Register</a>

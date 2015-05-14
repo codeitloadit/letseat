@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {% if request.user.is_staff %}
+        <div class="content-padded"><a href="{% url 'restaurants:new' %}"><button class="btn btn-block btn-positive">Add a new restaurant</button></a></div>
+    {% endif %}
+    <ul class="table-view">
+        {% for restaurant in restaurants %}
+            <li class="table-view-cell">{{ restaurant.name }}<button class="btn btn-negative btn-outlined">0</button></li>
+        {% endfor %}
+        <li class="table-view-divider">Placeholders</li>
+        <li class="table-view-cell">Placeholder 1<button class="btn btn-positive btn-outlined">1</button></li>
+        <li class="table-view-cell">Placeholder 2<button class="btn btn-negative btn-outlined">0</button></li>
+        <li class="table-view-cell">Placeholder 3<button class="btn btn-primary btn-outlined">2</button></li>
+    </ul>
+{% endblock %}

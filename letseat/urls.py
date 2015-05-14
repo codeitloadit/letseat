@@ -1,5 +1,4 @@
-"""myproj URL Configuration
-
+"""
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.8/topics/http/urls/
 Examples:
@@ -15,16 +14,18 @@ Including another URLconf
 """
 
 from django.conf.urls import include, url
-# from django.core.urlresolvers import reverse
 from django.contrib import admin
 from django.views.generic.base import RedirectView, TemplateView
 
 from letseat import views
+from restaurants import urls as restaurant_urls
 
 urlpatterns = [
-    url(r'^admin/', include(admin.site.urls)),
     url(r'^favicon\.ico$', RedirectView.as_view(url='/static/favicon.ico', permanent=True)),
     url(r'^accounts/login/*$', RedirectView.as_view(url='/login_or_register', permanent=True)),
+
+    url(r'^admin/', include(admin.site.urls)),
+    url(r'^restaurants/', include(restaurant_urls, namespace='restaurants')),
 
     url(r'^/*$', views.index, name='index'),
     url(r'^register/*$', views.register, name='register'),
