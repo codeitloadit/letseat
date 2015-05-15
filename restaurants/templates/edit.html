@@ -7,7 +7,7 @@
             <label class="btn btn-positive btn-block btn-outlined">{{ restaurant.name }}</label>
             <input type="text" name="phone_number" placeholder="Phone Number" {% if restaurant.phone_number %}value="{{ restaurant.phone_number }}"{% endif %}>
             <input type="text" name="address" placeholder="Address" {% if restaurant.address %}value="{{ restaurant.address }}"{% endif %}>
-            <input type="text" name="website" placeholder="Website" {% if restaurant.website %}value="{{ restaurant.website }}"{% endif %}>
+            <input type="text" name="menu" placeholder="Menu" {% if restaurant.menu %}value="{{ restaurant.menu }}"{% endif %}>
             <input type="text" name="logo" placeholder="Logo" {% if restaurant.logo %}value="{{ restaurant.logo }}"{% endif %}>
             <button class="btn btn-positive btn-block">Save</button>
             <a href="{% url 'restaurants:index' %}" class="btn btn-negative btn-block">Cancel</a>

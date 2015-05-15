@@ -19,10 +19,10 @@ def new(request):
             return TemplateResponse(request, 'new.html', {'messages': ['Name is a required field!']})
         phone_number = request.POST.get('phone_number')
         address = request.POST.get('address')
-        website = request.POST.get('website')
+        menu = request.POST.get('menu')
         logo = request.POST.get('logo')
         Restaurant.objects.create(created_by=request.user, modified_by= request.user, name=name.strip(),
-                                  phone_number=phone_number, address=address, website=website, logo=logo)
+                                  phone_number=phone_number, address=address, menu=menu, logo=logo)
         return HttpResponseRedirect(reverse('restaurants:index'))
     return TemplateResponse(request, 'new.html')
 
@@ -32,7 +32,7 @@ def edit(request, pk):
     if request.method == 'POST':
         restaurant.phone_number = request.POST.get('phone_number')
         restaurant.address = request.POST.get('address')
-        restaurant.website = request.POST.get('website')
+        restaurant.menu = request.POST.get('menu')
         restaurant.logo = request.POST.get('logo')
         restaurant.save()
         return HttpResponseRedirect(reverse('restaurants:index'))

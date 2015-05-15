@@ -10,7 +10,7 @@ class Restaurant(models.Model):
     name = models.CharField(max_length=32, unique=True)
     phone_number = models.CharField(max_length=16)
     address = models.TextField()
-    website = models.URLField()
+    menus = models.URLField()
     logo = models.URLField()
 
     class Meta:
